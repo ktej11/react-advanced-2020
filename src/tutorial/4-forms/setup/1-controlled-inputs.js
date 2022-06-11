@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 // React
 // value, onChange
 
-// 6:40:43
+
 const ControlledInputs = () => {
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
@@ -13,9 +13,20 @@ const ControlledInputs = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(firstName, email);
-    setPeople(setFirstName, setEmail);
-    console.log(people);
+    // console.log(firstName, email);
+    // setPeople(setFirstName, setEmail);
+    // console.log(people);
+    if (firstName && email) {
+      const person = { firstName: firstName, email: email };
+      console.log(person);
+      setPeople((people) => {
+        return [...people, person];
+      });
+      setFirstName('');
+      setEmail('');
+    } else {
+      console.log('empty values');
+    }
   }
   return <>
     <article>
@@ -30,7 +41,16 @@ const ControlledInputs = () => {
         </div>
         <button type="submit">add person</button>
       </form>
+      {
+        people.map((person) => {
+          const { id, firstName, email } = person;
+          return <div>
+            <h4>{firstName}</h4>
+          </div>
+        })
+      }
     </article>
+
   </>;
 };
 
