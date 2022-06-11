@@ -4,7 +4,23 @@ import React, { useState, useEffect } from 'react';
 // second argument
 
 const UseEffectCleanup = () => {
-  return <h2>useEffect cleanup</h2>;
+  const [size, setSize] = useState(window.innerWidth);
+
+  const checksize = () => {
+    setSize(window.innerWidth);
+  };
+  useEffect(() => {
+    console.log('use effect');
+    window.addEventListener('resize', checksize);
+    return () => {
+      console.log('cleaner');
+      window.removeEventListener('resize', checksize)
+    }
+  });
+  console.log('render');
+  return (<>
+    <h1>Screen Size : {size} Px</h1>
+  </>);
 };
 
 export default UseEffectCleanup;
