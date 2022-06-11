@@ -13,6 +13,7 @@ const ErrorExample = () => {
         change title
       </button>
       <h1>{title}</h1>
+      <p>testing git</p>
     </>
   )
 };
