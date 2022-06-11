@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ErrorExample = () => {
-  let title = 'random tits'
+  let title = 'random tis'
 
   const handleClick = () => {
     title = 'left wet'
